@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Franchise Club | Hotel & Resort Franchise Conversion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* DESIGN TOKENS */
+        :root {
+            --dark-navy: #1C1C2E;
+            --gold: #B8860B;
+            --gold-hover: #A07800;
+            --light-gold: #FFF8E7;
+            --white: #FFFFFF;
+            --light-grey: #F5F5F5;
+            --text-dark: #333333;
+            --text-grey: #777777;
+            --green: #1B5E20;
+            --whatsapp: #25D366;
+            --font-main: 'Inter', sans-serif;
+            --border-radius: 8px;
+            --shadow-card: 0 8px 32px rgba(0,0,0,0.15);
+        }
+
+        /* RESET & BASE */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-main); color: var(--text-dark); background-color: var(--white); line-height: 1.6; scroll-behavior: smooth; }
+        img { max-width: 100%; height: auto; display: block; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .section-padding { padding: 80px 0; }
+        .text-center { text-align: center; }
+        .gold-text { color: var(--gold); }
+        .navy-bg { background-color: var(--dark-navy); color: var(--white); }
+        .grey-bg { background-color: var(--light-grey); }
+        
+        h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
+        h2 { font-size: 34px; color: var(--dark-navy); margin-bottom: 16px; }
+        .navy-bg h2 { color: var(--white); }
+        .sub-heading { font-size: 18px; color: var(--text-grey); margin-bottom: 40px; font-weight: 500; }
+        .navy-bg .sub-heading { color: #CCCCCC; }
+
+        /* BUTTONS & ANIMATIONS */
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(184, 134, 11, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(184, 134, 11, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(184, 134, 11, 0); }
+        }
+
+        .btn-gold {
+            background-color: var(--gold); color: var(--dark-navy); font-weight: 700; font-size: 16px;
+            padding: 16px 32px; border: none; border-radius: var(--border-radius); cursor: pointer;
+            transition: all 0.3s ease; display: inline-block; text-align: center; text-transform: uppercase;
+        }
+        
+        .btn-gold-animated {
+            animation: pulse-gold 2s infinite; position: relative; overflow: hidden; z-index: 1;
+        }
+        
+        .btn-gold-animated::after {
+            content: ''; position: absolute; top: -50%; left: -60%; width: 20%; height: 200%; 
+            background: rgba(255,255,255,0.4); transform: rotate(45deg); transition: 0.5s ease-in-out; z-index: -1;
+        }
+        .btn-gold-animated:hover::after { left: 120%; }
+        .btn-gold:hover { background-color: var(--gold-hover); transform: translateY(-2px); }
+        .btn-block { width: 100%; }
+
+        /* HEADER */
+        header {
+            background-color: var(--dark-navy); position: sticky; top: 0; z-index: 1000; height: 64px;
+            display: flex; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .header-content { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .logo-area { display: flex; align-items: center; gap: 12px; }
+        .logo-img { height: 40px; }
+        .logo-text { color: var(--gold); font-weight: 700; font-size: 18px; line-height: 1.1; }
+        .logo-sub { color: var(--white); font-size: 11px; font-weight: 400; letter-spacing: 0.5px; }
+        
+        /* HERO SECTION */
+        .hero {
+            position: relative; min-height: 90vh; display: flex; align-items: center; padding: 80px 0;
+            background: linear-gradient(rgba(28, 28, 46, 0.85), rgba(28, 28, 46, 0.95)), 
+                        url('https://res.cloudinary.com/dvmkndb5o/image/upload/v1781163091/Gemini_Generated_Image_tx1b6vtx1b6vtx1b_uncxo6.png') center/cover no-repeat;
+        }
+        .hero-grid { display: grid; grid-template-columns: 60% 40%; gap: 40px; align-items: center; }
+        
+        .hero-content { color: var(--white); }
+        .pain-text { color: #FF8A80; font-size: 16px; font-weight: 500; margin-bottom: 12px; display: inline-block; background: rgba(183, 28, 28, 0.2); padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(255, 138, 128, 0.3); }
+        .hero-content h1 { font-size: 46px; margin-bottom: 24px; color: var(--white); }
+        .hero-content p { font-size: 18px; color: #E0E0E0; margin-bottom: 32px; max-width: 90%; }
+        
+        .trust-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+        .trust-list li { display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 16px; }
+        .check-icon { color: var(--green); background: var(--white); border-radius: 50%; padding: 2px 4px; font-size: 12px; }
+
+        .mobile-hero-cta { display: none; }
+
+        /* PROGRESSIVE FORM UI (CRO) */
+        .form-card { background: var(--white); border-radius: 12px; padding: 32px; border-top: 4px solid var(--gold); box-shadow: var(--shadow-card); color: var(--text-dark); text-align: left; }
+        .form-card h3 { font-size: 22px; color: var(--dark-navy); text-align: center; margin-bottom: 8px; }
+        .form-card p { font-size: 14px; color: var(--text-grey); text-align: center; margin-bottom: 24px; }
+        
+        .step-indicator { display: flex; justify-content: space-between; margin-bottom: 24px; position: relative; }
+        .step-indicator::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 2px; background: #EAEAEA; z-index: 1; transform: translateY(-50%); }
+        .step-dot { width: 30px; height: 30px; border-radius: 50%; background: #EAEAEA; color: var(--text-grey); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; z-index: 2; position: relative; transition: all 0.3s; }
+        .step-dot.active { background: var(--dark-navy); color: var(--gold); box-shadow: 0 0 0 4px rgba(28, 28, 46, 0.1); }
+        .step-dot.completed { background: var(--green); color: var(--white); }
+
+        .form-step { display: none; animation: fadeIn 0.4s ease-out forwards; }
+        .form-step.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 14px; font-weight: 600; color: var(--dark-navy); margin-bottom: 6px; }
+        .form-control { width: 100%; height: 48px; padding: 0 16px; border: 1px solid #CCC; border-radius: var(--border-radius); font-size: 15px; font-family: var(--font-main); }
+        .form-control:focus { border-color: var(--gold); outline: none; box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.2); }
+        .trust-line { font-size: 12px; color: var(--text-grey); text-align: center; margin-top: 16px; display: block; }
+
+        .form-trust-logos { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 16px; padding-top: 16px; border-top: 1px dashed #EAEAEA; }
+        .form-trust-logos span { font-size: 11px; color: var(--text-grey); font-weight: 600; text-transform: uppercase; }
+        .mini-logo-text { font-weight: 800; color: var(--dark-navy); font-size: 12px; }
+
+        .thank-you-state { display: none; text-align: center; padding: 20px 0; }
+        .thank-you-state h3 { color: var(--green); font-size: 24px; margin-bottom: 12px; }
+        .btn-whatsapp { background-color: var(--whatsapp); color: var(--white); margin-top: 16px; animation: none; }
+
+        /* BRANDS LOGO STRIP */
+        .brand-pills { display: grid; gap: 18px; grid-template-columns: repeat(5, minmax(128px, 1fr)); margin: 28px auto 0; max-width: 920px; }
+        .pill { align-items: center; aspect-ratio: 1 / 1; background: var(--white); border: 1px solid #EAEAEA; border-radius: 12px; box-shadow: 0 8px 24px rgba(28, 28, 46, 0.08); display: flex; justify-content: center; padding: 18px; position: relative; transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; }
+        .pill:hover { border-color: rgba(184, 134, 11, 0.45); box-shadow: 0 12px 30px rgba(28, 28, 46, 0.12); transform: translateY(-3px); }
+        .pill img { display: block; height: 82%; max-height: 92px; max-width: 88%; object-fit: contain; transform: scale(1.16); width: 88%; }
+        .pill.international { border-color: var(--gold); }
+        .pill.international::after { content: '★ Int'; font-size: 11px; font-weight: 700; color: var(--gold); position: absolute; top: 10px; right: 10px; background: var(--white); padding: 3px 7px; border-radius: 999px; border: 1px solid var(--gold); }
+
+        /* GRIDS & CARDS */
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 40px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+        
+        .feature-card { background: var(--white); padding: 32px 24px; border-radius: var(--border-radius); box-shadow: var(--shadow-card); border-top: 3px solid var(--gold); transition: transform 0.3s; }
+        .feature-card:hover { transform: translateY(-5px); }
+        .feature-icon { font-size: 36px; margin-bottom: 16px; display: block; }
+        .feature-card h3 { font-size: 18px; margin-bottom: 12px; color: var(--dark-navy); }
+        .feature-card p { font-size: 14px; color: var(--text-grey); }
+
+        /* HOW IT WORKS STEPS */
+        .step-card { text-align: center; padding: 24px; }
+        .step-number { width: 48px; height: 48px; background: var(--gold); color: var(--dark-navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; margin: 0 auto 16px auto; }
+        .step-card h3 { font-size: 18px; margin-bottom: 12px; }
+        .step-card p { font-size: 14px; color: var(--text-grey); }
+
+        /* EXPERT PROFILE */
+        .expert-card { display: flex; align-items: center; background: var(--light-gold); padding: 32px; border-radius: 12px; gap: 32px; margin-top: 40px; border: 1px solid rgba(184, 134, 11, 0.2); }
+        .expert-img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 4px solid var(--gold); background: var(--white); }
+        .expert-info h4 { font-size: 22px; color: var(--dark-navy); margin-bottom: 8px; }
+        .expert-info p { font-size: 16px; color: var(--text-dark); }
+
+        /* FAQ ACCORDION */
+        .faq-item { background: var(--white); border: 1px solid #EAEAEA; border-radius: var(--border-radius); margin-bottom: 16px; overflow: hidden; }
+        .faq-question { padding: 20px 24px; width: 100%; text-align: left; background: none; border: none; font-size: 16px; font-weight: 600; color: var(--dark-navy); cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-main); }
+        .faq-question::after { content: '+'; font-size: 24px; color: var(--gold); transition: transform 0.3s; }
+        .faq-question.active::after { content: '−'; transform: rotate(180deg); }
+        .faq-answer { padding: 0 24px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background: var(--light-grey); }
+        .faq-answer p { padding: 20px 0; color: var(--text-dark); font-size: 15px; }
+
+        /* CTA BANNERS */
+        .cta-banner { background: linear-gradient(135deg, var(--dark-navy) 0%, #2A2A4A 100%); padding: 60px 0; border-top: 4px solid var(--gold); border-bottom: 4px solid var(--gold); }
+        
+        /* LOCATIONS */
+        .location-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 32px; }
+        .loc-tag { background: var(--dark-navy); color: var(--white); padding: 8px 16px; border-radius: 20px; font-size: 14px; }
+        .loc-tag.spiritual { background: var(--gold); color: var(--dark-navy); font-weight: 700; box-shadow: 0 4px 10px rgba(184, 134, 11, 0.3); }
+
+        /* FOOTER */
+        footer { background-color: var(--dark-navy); color: var(--white); border-top: 1px solid rgba(255,255,255,0.1); padding: 60px 0 40px 0; text-align: center; font-size: 14px; }
+        .footer-links { display: flex; justify-content: center; gap: 24px; margin: 24px 0; flex-wrap: wrap; color: #CCC; }
+        .footer-logo { width: min(260px, 80vw); margin: 0 auto 12px; }
+        .footer-disclaimer { font-size: 12px; color: var(--text-grey); font-style: italic; }
+
+        /* FLOATING ACTIONS */
+        .fab-whatsapp { position: fixed; bottom: 24px; right: 24px; background: var(--whatsapp); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 32px; box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4); z-index: 999; transition: transform 0.2s; }
+        .fab-whatsapp:hover { transform: scale(1.1); }
+        .mobile-call-bar { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--gold); color: var(--dark-navy); text-align: center; padding: 16px; font-weight: 700; font-size: 16px; z-index: 998; box-shadow: 0 -4px 15px rgba(0,0,0,0.15); }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .hero-grid { grid-template-columns: 1fr; }
+            .grid-4, .grid-3 { grid-template-columns: repeat(2, 1fr); }
+            .brand-pills { grid-template-columns: repeat(3, minmax(120px, 1fr)); max-width: 620px; }
+            .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; text-align: center; margin-top: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            header { height: 56px; }
+            .section-padding { padding: 50px 0; }
+            h2 { font-size: 28px; }
+            .hero { padding: 40px 0 60px 0; }
+            .hero-content h1 { font-size: 34px; }
+            .hero-content p { font-size: 16px; }
+            
+            .mobile-hero-cta { display: block; margin-bottom: 40px; }
+            .grid-4, .grid-3, .stats-grid { grid-template-columns: 1fr; }
+            .brand-pills { gap: 14px; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 420px; }
+            .pill { border-radius: 10px; padding: 14px; }
+            .pill img {
+                max-height: 82px;
+            }
+            
+            .fab-whatsapp { bottom: 80px; }
+            .mobile-call-bar { display: block; }
+            body { padding-bottom: 60px; }
+            
+            .expert-card { flex-direction: column; text-align: center; }
+            .bottom-form-container { padding: 0 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo-area">
+                <img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1781172811/Untitled_design_1_bieoh3.png" alt="Franchise Club" class="logo-img">
+                <div>
+                    
+                </div>
+            </div>
+            <button onclick="document.getElementById('top-form').scrollIntoView({behavior: 'smooth'})" class="btn-gold" style="padding: 10px 20px; font-size: 14px;">Get Free Consultation</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-grid">
+            
+            <div class="hero-content">
+                <span class="pain-text">Stop losing revenue to empty rooms & OTA commissions</span>
+                <h1>Turn Your Independent Property Into a Premium Branded Hotel</h1>
+                <p>Franchise Club connects 40+ room properties across North & West India with Sterling, Sarovar, Royal Orchid & 20+ premium brands. Secure a Management Contract, Revenue Share, or Guaranteed Lease today.</p>
+                
+                <ul class="trust-list">
+                    <li><span class="check-icon">✓</span> 100+ Hotels Converted</li>
+                    <li><span class="check-icon">✓</span> 25+ Premium Hotel Brands</li>
+                    <li><span class="check-icon">✓</span> 14+ Years of Experience</li>
+                </ul>
+
+                <button class="btn-gold btn-gold-animated btn-block mobile-hero-cta" onclick="document.getElementById('top-form').scrollIntoView({behavior: 'smooth'})">GET MY REVENUE PROJECTION &rarr;</button>
+            </div>
+
+            <div class="form-card" id="top-form">
+                <h3>Get Your Free Revenue Fitment</h3>
+                <p>Discover which premium brand fits your property best.</p>
+                
+                <div class="step-indicator">
+                    <div class="step-dot active" id="dot1">1</div>
+                    <div class="step-dot" id="dot2">2</div>
+                </div>
+
+                <form id="leadForm1" class="lead-form">
+                    <div class="form-step active" id="step1">
+                        <div class="form-group">
+                            <label>Number of Keys / Rooms</label>
+                            <select class="form-control" required id="roomCount">
+                                <option value="">Select Room Count</option>
+                                <option value="40-60">40–60 Rooms</option>
+                                <option value="60-100">60–100 Rooms</option>
+                                <option value="100-150">100–150 Rooms</option>
+                                <option value="150+">150+ Rooms</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Property City / State</label>
+                            <input type="text" class="form-control" placeholder="e.g. Udaipur, Rajasthan" required id="propCity">
+                        </div>
+                        <button type="button" class="btn-gold btn-block" onclick="nextStep()">CONTINUE TO STEP 2 &rarr;</button>
+                    </div>
+
+                    <div class="form-step" id="step2">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" class="form-control" placeholder="Your full name" required minlength="2">
+                        </div>
+                        <div class="form-group">
+                            <label>WhatsApp Number</label>
+                            <input type="tel" class="form-control" placeholder="For faster updates" required pattern="[0-9]{10}">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" class="form-control" placeholder="Where should we send the projection?" required>
+                        </div>
+                        
+                        <button type="submit" class="btn-gold btn-gold-animated btn-block">GET MY PROJECTION &rarr;</button>
+                        <button type="button" style="background:none; border:none; color:var(--text-grey); font-size:12px; margin-top:12px; width:100%; cursor:pointer;" onclick="prevStep()">&larr; Back to Property Details</button>
+                    </div>
+
+                    <span class="trust-line">🔒 Your details are 100% confidential. No spam.</span>
+                    
+                    <div class="form-trust-logos">
+                        <span>Evaluated for:</span>
+                        <span class="mini-logo-text">STERLING</span>
+                        <span class="mini-logo-text">SAROVAR</span>
+                        <span class="mini-logo-text">ROYAL ORCHID</span>
+                    </div>
+                </form>
+
+                <div class="thank-you-state thank-you-msg">
+                    <h3>Fitment Request Received! ✓</h3>
+                    <p>Amit Ojha will review your property details and call you within 24 hours.</p>
+                    <a href="https://wa.me/919582252656" class="btn-gold btn-block btn-whatsapp" target="_blank">Message Amit on WhatsApp Now</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="grey-bg section-padding text-center">
+        <div class="container">
+            <h2>Hotel Brands You Can Partner With</h2>
+            <div class="brand-pills">
+                <span class="pill"><img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1781177189/10_ac8wxl.png" alt="Sterling Hotels &amp; Resorts logo" loading="lazy"></span>
+                <span class="pill"><img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1781177189/8_pwakea.png" alt="Sarovar Hotels logo" loading="lazy"></span>
+                <span class="pill"><img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1781177189/6_dgs7qp.png" alt="Royal Orchid logo" loading="lazy"></span>
+                <span class="pill"><img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1781177189/9_ixkqhd.png" alt="Brij Hotels logo" loading="lazy"></span>
+                <span class="pill"><img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1781177189/7_fbirvz.png" alt="Clarks Hotels logo" loading="lazy"></span>
+                <span class="pill"><img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1781177188/5_l7w3j7.png" alt="Best Western logo" loading="lazy"></span>
+                <span class="pill"><img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1781177188/3_zcuo3s.png" alt="Tivoli Resorts logo" loading="lazy"></span>
+                <span class="pill"><img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1781177188/4_nlkca3.png" alt="Sayaji Hotels logo" loading="lazy"></span>
+                <span class="pill international"><img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1781177188/2_so8xqa.png" alt="Soaltee International logo" loading="lazy"></span>
+                <span class="pill international"><img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1781177188/1_vbhjff.png" alt="Atmosphere Living International logo" loading="lazy"></span>
+            </div>
+            <p class="trust-line" style="margin-top: 24px; font-size: 14px;">+ More brands available based on property type and location</p>
+        </div>
+    </section>
+
+    <section class="navy-bg section-padding">
+        <div class="container">
+            <div class="stats-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center;">
+                <div><div style="font-size: 52px; font-weight: 700; color: var(--gold);">100+</div><div style="font-size: 16px;">Properties Converted</div></div>
+                <div><div style="font-size: 52px; font-weight: 700; color: var(--gold);">25+</div><div style="font-size: 16px;">Premium Brands</div></div>
+                <div><div style="font-size: 52px; font-weight: 700; color: var(--gold);">4</div><div style="font-size: 16px;">Business Models</div></div>
+                <div><div style="font-size: 52px; font-weight: 700; color: var(--gold);">14+</div><div style="font-size: 16px;">Years Experience</div></div>
+            </div>
+
+            <div class="expert-card">
+                <img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1781161720/Founder_FC_without_BG_h4a8eg.png" alt="Amit Ojha" class="expert-img">
+                <div class="expert-info">
+                    <h4>Amit Ojha — Lead Strategic Consultant</h4>
+                    <p>With over 14 years of specialized expertise in hospitality brand tie-ups, Amit personally oversees the matching, negotiation, and structuring of your hotel franchise to ensure maximum long-term profitability and seamless brand integration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container text-center">
+            <h2>Getting a Hotel Brand is Simpler Than You Think</h2>
+            <p class="sub-heading">We handle the heavy lifting from assessment to final launch.</p>
+            
+            <div class="grid-4">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Submit Details</h3>
+                    <p>Fill our short form with basic property information. No cost, no commitment.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Free Assessment</h3>
+                    <p>Our consultant reviews your property and evaluates brand fitment based on size and location.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Brand Negotiation</h3>
+                    <p>We shortlist the right brands, present options, and negotiate the agreement on your behalf.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Launch & Support</h3>
+                    <p>Your property gets rebranded. Staff is trained to brand standards. Operations transform.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-banner text-center">
+        <div class="container">
+            <h2 style="color: var(--white); margin-bottom: 24px;">Don't Let Your Property Run Below Its Potential</h2>
+            <p style="color: #E0E0E0; margin-bottom: 32px; font-size: 18px;">Find out which premium brand is the perfect fit for your hotel today.</p>
+            <button onclick="document.getElementById('top-form').scrollIntoView({behavior: 'smooth'})" class="btn-gold btn-gold-animated">CHECK MY PROPERTY FITMENT &rarr;</button>
+        </div>
+    </section>
+
+    <section class="grey-bg section-padding">
+        <div class="container">
+            <h2 class="text-center">Choose the Business Model That Works for You</h2>
+            <p class="text-center sub-heading">Franchise Club offers four models. We match the model to your financial goals.</p>
+            
+            <div class="grid-4">
+                <div class="feature-card">
+                    <span class="feature-icon">🏨</span>
+                    <h3>Management Contract</h3>
+                    <p>The hotel brand takes over full operations. You retain ownership and earn revenue share with zero operational involvement.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📊</span>
+                    <h3>Revenue Sharing</h3>
+                    <p>You and the brand split revenues based on agreed percentages. Both parties share the risk and the upside equally.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🛡</span>
+                    <h3>MG Revenue Sharing</h3>
+                    <p>Receive a guaranteed minimum monthly income regardless of hotel performance, plus an additional share of upside revenue.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🔑</span>
+                    <h3>Lease</h3>
+                    <p>The hotel brand leases your property for a fixed annual amount. You earn fixed rental income with zero involvement in operations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="text-center">Properties We Work With</h2>
+            <div class="grid-4" style="margin-bottom: 80px;">
+                <div class="feature-card text-center" style="border-top: none; background: var(--light-grey); box-shadow: none;">
+                    <span class="feature-icon">🏩</span>
+                    <h3 style="font-size: 16px;">Operational Hotel</h3>
+                    <p style="font-size: 13px;">Boost revenue & occupancy for your running independent hotel.</p>
+                </div>
+                <div class="feature-card text-center" style="border-top: none; background: var(--light-grey); box-shadow: none;">
+                    <span class="feature-icon">🏗</span>
+                    <h3 style="font-size: 16px;">Under Construction</h3>
+                    <p style="font-size: 13px;">Secure a brand before opening for instant market recognition.</p>
+                </div>
+                <div class="feature-card text-center" style="border-top: none; background: var(--light-grey); box-shadow: none;">
+                    <span class="feature-icon">📐</span>
+                    <h3 style="font-size: 16px;">Built to Suite (BTS)</h3>
+                    <p style="font-size: 13px;">Coordinate brand specs perfectly during your construction phase.</p>
+                </div>
+                <div class="feature-card text-center" style="border-top: none; background: var(--light-grey); box-shadow: none;">
+                    <span class="feature-icon">🏢</span>
+                    <h3 style="font-size: 16px;">Commercial Conversion</h3>
+                    <p style="font-size: 13px;">Turn your office building or mall space into a branded hotel.</p>
+                </div>
+            </div>
+
+            <h2 class="text-center">Why 100+ Property Owners Chose Franchise Club</h2>
+            <div class="grid-3">
+                <div class="feature-card">
+                    <span class="feature-icon">🏨</span>
+                    <h3>25+ Hotel Brands</h3>
+                    <p>Access to domestic and international brands across all star categories — from mid-scale to ultra-luxury.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">⚙</span>
+                    <h3>End-to-End Service</h3>
+                    <p>We handle brand shortlisting, negotiation, agreement, renovation standards, staff training and launch.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📋</span>
+                    <h3>All Business Models</h3>
+                    <p>Management Contract, Revenue Sharing, MG Model and Lease — we match the model to your goals.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🤝</span>
+                    <h3>Verified Relationships</h3>
+                    <p>Direct, established relationships with Sterling, Sarovar, Royal Orchid, Brij Hotels, Soaltee and 20+ more.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📅</span>
+                    <h3>14+ Years Experience</h3>
+                    <p>Deep hospitality industry expertise with 100+ successful hotel brand conversions across India.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">💬</span>
+                    <h3>No Hidden Costs</h3>
+                    <p>Our fee structure is completely transparent and discussed upfront before any commitment from you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="grey-bg section-padding">
+        <div class="container text-center">
+            <h2>Currently Serving North & West India</h2>
+            <div class="location-tags">
+                <span class="loc-tag">Delhi NCR</span>
+                <span class="loc-tag">Jaipur</span>
+                <span class="loc-tag">Udaipur</span>
+                <span class="loc-tag">Jodhpur</span>
+                <span class="loc-tag spiritual">Ayodhya ★</span>
+                <span class="loc-tag spiritual">Varanasi ★</span>
+                <span class="loc-tag spiritual">Mathura ★</span>
+                <span class="loc-tag spiritual">Vrindavan ★</span>
+                <span class="loc-tag">Rishikesh</span>
+                <span class="loc-tag">Haridwar</span>
+                <span class="loc-tag">Mumbai</span>
+                <span class="loc-tag">Pune</span>
+            </div>
+            <p class="gold-text" style="margin-top: 24px; font-style: italic; font-size: 15px; font-weight: 500;">Spiritual destinations (Ayodhya, Mathura, Varanasi, Vrindavan) — currently our fastest growing market for hotel brand conversions.</p>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="text-center" style="margin-bottom: 40px;">Frequently Asked Questions</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                
+                <div class="faq-item">
+                    <button class="faq-question">What is the minimum property size to qualify?</button>
+                    <div class="faq-answer"><p>Your property must have a minimum of 40 keys (rooms). Properties with 40 to 150+ rooms are welcome. Both operational and under-construction hotels qualify.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Which hotel brands can I access through Franchise Club?</button>
+                    <div class="faq-answer"><p>We work with 25+ brands including Sterling, Sarovar Hotels, Royal Orchid, Brij Hotels, Clarks, Tivoli Resorts, Best Western, Spree, Sayyaji, Prism by OYO, Soaltee (International), Atmosphere Living (International) and more.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">What business model is best for me?</button>
+                    <div class="faq-answer"><p>It depends on your goals. If you want hands-off income — Management Contract. If you want guaranteed monthly income — MG Revenue Sharing. If you want to exit operations completely — Lease. Our consultant will advise you in the free assessment call.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Does my under-construction property qualify?</button>
+                    <div class="faq-answer"><p>Yes. We work with under-construction properties, BTS (Built to Suite) projects and commercial buildings being converted to hotels. The earlier you engage with us, the better the brand options available.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">How long does the entire process take?</button>
+                    <div class="faq-answer"><p>From initial assessment to brand agreement signing typically takes 60–120 days depending on the brand and property. Franchise Club manages the entire timeline.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">What does it cost to work with Franchise Club?</button>
+                    <div class="faq-answer"><p>Our fee structure is discussed transparently in the first consultation call. There are no hidden charges. The initial property assessment is completely free.</p></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="bottom-form-section" class="navy-bg section-padding">
+        <div class="container bottom-form-container">
+            <h2 class="gold-text text-center">Ready to Get a Premium Brand for Your Property?</h2>
+            <p class="text-center" style="margin-bottom: 40px; color: #E0E0E0;">Fill in your details below. Our consultant Amit Ojha will personally call you within 24 hours.</p>
+            
+            <div class="form-card" style="max-width: 600px; margin: 0 auto; padding: 40px;">
+                <form id="leadForm2" class="lead-form">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" class="form-control" placeholder="Your full name" required minlength="2">
+                    </div>
+                    <div class="form-group">
+                        <label>Mobile Number</label>
+                        <input type="tel" class="form-control" placeholder="WhatsApp number preferred" required pattern="[0-9]{10}">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" class="form-control" placeholder="yourname@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Property City / State</label>
+                        <input type="text" class="form-control" placeholder="e.g. Udaipur, Rajasthan" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Keys / Rooms</label>
+                        <select class="form-control" required>
+                            <option value="">Select Room Count</option>
+                            <option value="40-60">40–60 Rooms</option>
+                            <option value="60-100">60–100 Rooms</option>
+                            <option value="100-150">100–150 Rooms</option>
+                            <option value="150+">150+ Rooms</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn-gold btn-gold-animated btn-block" style="margin-top: 24px;">GET FREE CONSULTATION &rarr;</button>
+                    <span class="trust-line">🔒 Your details are 100% confidential. No spam.</span>
+                </form>
+
+                <div class="thank-you-state thank-you-msg">
+                    <h3>Thank You! ✓</h3>
+                    <p>Your property details have been received. Amit Ojha will personally call you within 24 hours.</p>
+                    <a href="https://wa.me/919582252656" class="btn-gold btn-block btn-whatsapp" target="_blank">Chat With Us on WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1781172811/Untitled_design_1_bieoh3.png" alt="Franchise Club" class="footer-logo">
+            
+            <p class="footer-disclaimer">Minimum property requirement: 40 keys (rooms). Currently serving North & West India — Phase 1.</p>
+            <p style="margin-top: 16px; color: #777;">&copy; 2026 Franchise Club. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/919582252656?text=Hi%20Franchise%20Club,%20I%20have%20a%20hotel%20property%20and%20would%20like%20to%20know%20about%20brand%20tie-up%20options." class="fab-whatsapp" target="_blank">
+        <img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1781172206/w_logo_yara3v.png" alt="WhatsApp">
+    </a>
+    <a href="tel:+919582252656" class="mobile-call-bar">
+        📞 CALL NOW — AMIT OJHA
+    </a>
+
+    <script>
+        // Progressive Disclosure Logic (Hero Form)
+        function nextStep() {
+            const roomCount = document.getElementById('roomCount').value;
+            const propCity = document.getElementById('propCity').value;
+            
+            if(!roomCount || !propCity) {
+                alert("Please fill in your property details to continue.");
+                return;
+            }
+
+            document.getElementById('step1').classList.remove('active');
+            document.getElementById('step2').classList.add('active');
+            
+            document.getElementById('dot1').classList.remove('active');
+            document.getElementById('dot1').classList.add('completed');
+            document.getElementById('dot1').innerHTML = '✓';
+            
+            document.getElementById('dot2').classList.add('active');
+        }
+
+        function prevStep() {
+            document.getElementById('step2').classList.remove('active');
+            document.getElementById('step1').classList.add('active');
+            
+            document.getElementById('dot2').classList.remove('active');
+            
+            document.getElementById('dot1').classList.remove('completed');
+            document.getElementById('dot1').classList.add('active');
+            document.getElementById('dot1').innerHTML = '1';
+        }
+
+        // Form Submission Logic for all forms
+        const forms = document.querySelectorAll('.lead-form');
+        forms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // PushState for Google Tag Manager tracking
+                window.history.pushState({}, '', '/thank-you');
+                
+                // Hide form steps/inputs, show thank you state within the same card
+                const formElements = this.querySelectorAll('.form-step, .form-group, button, .trust-line, .form-trust-logos, .step-indicator');
+                formElements.forEach(el => el.style.display = 'none');
+                
+                // Note: since the thank you state is adjacent or inside the form container, handle visibility:
+                if (this.nextElementSibling && this.nextElementSibling.classList.contains('thank-you-msg')) {
+                     this.nextElementSibling.style.display = 'block';
+                } else if (this.querySelector('.thank-you-msg')) {
+                     this.querySelector('.thank-you-msg').style.display = 'block';
+                }
+            });
+        });
+
+        // FAQ Accordion Logic
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isActive = question.classList.contains('active');
+                
+                faqQuestions.forEach(q => {
+                    q.classList.remove('active');
+                    q.nextElementSibling.style.maxHeight = null;
+                });
+
+                if (!isActive) {
+                    question.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
