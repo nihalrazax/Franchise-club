@@ -641,8 +641,6 @@
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                // PushState for Google Tag Manager tracking
-                window.history.pushState({}, '', '/thank-you');
                 
                 // Hide form steps/inputs, show thank you state within the same card
                 const formElements = this.querySelectorAll('.form-step, .form-group, button, .trust-line, .form-trust-logos, .step-indicator');
