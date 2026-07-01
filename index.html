@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Description -->
+    <meta name="description" content="Turn your independent property into a premium branded hotel. Franchise Club connects properties across India with 25+ premium brands to maximize valuation.">
+
+    <!-- Open Graph Tags for Social Sharing -->
+    <meta property="og:title" content="Franchise Club | Hotel & Resort Franchise Conversion">
+    <meta property="og:description" content="Turn your independent property into a premium branded hotel. Franchise Club connects properties across India with 25+ premium brands to maximize valuation.">
+    <meta property="og:image" content="https://res.cloudinary.com/dvmkndb5o/image/upload/v1781172811/Untitled_design_1_bieoh3.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/">
+
+    <title>Franchise Club | Hotel & Resort Franchise Conversion</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* DESIGN TOKENS */
+        :root {
+            --dark-navy: #1C1C2E;
+            --gold: #B8860B;
+            --gold-hover: #A07800;
+            --light-gold: #FFF8E7;
+            --white: #FFFFFF;
+            --light-grey: #F9F9FA;
+            --border-grey: #EAEAEA;
+            --text-dark: #2D2D3A;
+            --text-grey: #666677;
+            --green: #1B5E20;
+            --whatsapp: #25D366;
+            --font-main: 'Inter', sans-serif;
+            --border-radius: 8px;
+            --shadow-card: 0 12px 40px rgba(0,0,0,0.08);
+            --shadow-hover: 0 16px 48px rgba(184, 134, 11, 0.12);
+        }
+
+        /* RESET & BASE */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-main); color: var(--text-dark); background-color: var(--white); line-height: 1.6; scroll-behavior: smooth; }
+        img { max-width: 100%; height: auto; display: block; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .section-padding { padding: 90px 0; }
+        .text-center { text-align: center; }
+        .gold-text { color: var(--gold); }
+        .navy-bg { background-color: var(--dark-navy); color: var(--white); }
+        .grey-bg { background-color: var(--light-grey); border-top: 1px solid var(--border-grey); border-bottom: 1px solid var(--border-grey); }
+        
+        h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
+        h2 { font-size: 36px; color: var(--dark-navy); margin-bottom: 16px; }
+        .navy-bg h2 { color: var(--white); }
+        .sub-heading { font-size: 18px; color: var(--text-grey); margin-bottom: 48px; font-weight: 500; }
+        .navy-bg .sub-heading { color: #CCCCCC; }
+
+        /* ELEGANT SEPARATOR */
+        .section-separator { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 24px; }
+        .section-separator::before, .section-separator::after { content: ''; height: 1px; width: 40px; background: rgba(184, 134, 11, 0.4); }
+        .section-separator-icon { width: 8px; height: 8px; background: var(--gold); transform: rotate(45deg); }
+        
+        .navy-bg .section-separator::before, .navy-bg .section-separator::after { background: rgba(255, 255, 255, 0.2); }
+
+        /* BUTTONS */
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(184, 134, 11, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(184, 134, 11, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(184, 134, 11, 0); }
+        }
+
+        .btn-gold {
+            background-color: var(--gold); color: var(--dark-navy); font-weight: 700; font-size: 16px;
+            padding: 16px 32px; border: none; border-radius: var(--border-radius); cursor: pointer;
+            transition: all 0.3s ease; display: inline-block; text-align: center; text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .btn-gold-animated { animation: pulse-gold 2s infinite; position: relative; overflow: hidden; z-index: 1; }
+        .btn-gold-animated::after {
+            content: ''; position: absolute; top: -50%; left: -60%; width: 20%; height: 200%; 
+            background: rgba(255,255,255,0.4); transform: rotate(45deg); transition: 0.5s ease-in-out; z-index: -1;
+        }
+        .btn-gold-animated:hover::after { left: 120%; }
+        .btn-gold:hover { background-color: var(--gold-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(184,134,11,0.3); }
+        .btn-block { width: 100%; }
+
+        /* HEADER */
+        header {
+            background-color: var(--dark-navy); position: sticky; top: 0; z-index: 1000; height: 80px;
+            display: flex; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .header-content { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .logo-area { display: flex; align-items: center; gap: 12px; }
+        
+        .logo-img { height: 55px; filter: drop-shadow(0 2px 10px rgba(255, 255, 255, 0.2)); transition: transform 0.3s ease; }
+        .logo-img:hover { transform: scale(1.02); }
+        
+        /* HERO SECTION */
+        .hero {
+            position: relative; min-height: 90vh; display: flex; align-items: center; padding: 80px 0;
+            background: linear-gradient(rgba(28, 28, 46, 0.88), rgba(28, 28, 46, 0.95)), 
+                        url('https://res.cloudinary.com/dvmkndb5o/image/upload/v1781163091/Gemini_Generated_Image_tx1b6vtx1b6vtx1b_uncxo6.png') center/cover no-repeat;
+        }
+        .hero-grid { display: grid; grid-template-columns: 55% 45%; gap: 50px; align-items: center; }
+        
+        .hero-content { color: var(--white); }
+        .pain-text { color: #FF8A80; font-size: 15px; font-weight: 600; margin-bottom: 16px; display: inline-block; background: rgba(183, 28, 28, 0.2); padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(255, 138, 128, 0.3); text-transform: uppercase; letter-spacing: 0.05em; }
+        .hero-content h1 { font-size: 48px; margin-bottom: 24px; color: var(--white); }
+        .hero-content p { font-size: 18px; color: #E0E0E0; margin-bottom: 32px; max-width: 95%; line-height: 1.7; }
+        
+        .trust-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+        .trust-list li { display: flex; align-items: center; gap: 12px; font-weight: 500; font-size: 17px; }
+        .check-icon { color: var(--gold); display: flex; align-items: center; justify-content: center; }
+        .check-icon svg { width: 20px; height: 20px; }
+
+        .mobile-hero-cta { display: none; }
+
+        /* FORM UI */
+        .form-card { background: var(--white); border-radius: 16px; padding: 40px; border-top: 4px solid var(--gold); box-shadow: var(--shadow-card); color: var(--text-dark); text-align: left; }
+        .form-card h3 { font-size: 24px; color: var(--dark-navy); text-align: center; margin-bottom: 8px; }
+        .form-card p { font-size: 15px; color: var(--text-grey); text-align: center; margin-bottom: 32px; }
+        
+        .step-indicator { display: flex; justify-content: space-between; margin-bottom: 32px; position: relative; max-width: 200px; margin-left: auto; margin-right: auto; }
+        .step-indicator::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 2px; background: var(--border-grey); z-index: 1; transform: translateY(-50%); }
+        .step-dot { width: 32px; height: 32px; border-radius: 50%; background: var(--border-grey); color: var(--text-grey); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; z-index: 2; position: relative; transition: all 0.3s; }
+        .step-dot.active { background: var(--dark-navy); color: var(--gold); box-shadow: 0 0 0 4px rgba(28, 28, 46, 0.1); }
+        .step-dot.completed { background: var(--green); color: var(--white); }
+
+        .form-step { display: none; animation: fadeIn 0.4s ease-out forwards; }
+        .form-step.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 14px; font-weight: 600; color: var(--dark-navy); margin-bottom: 8px; }
+        .form-control { width: 100%; height: 52px; padding: 0 16px; border: 1px solid #D1D1D1; border-radius: var(--border-radius); font-size: 15px; font-family: var(--font-main); transition: all 0.2s; }
+        .form-control:focus { border-color: var(--gold); outline: none; box-shadow: 0 0 0 4px rgba(184, 134, 11, 0.15); }
+        .trust-line { font-size: 13px; color: var(--text-grey); text-align: center; margin-top: 20px; display: block; }
+
+        .form-trust-logos { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border-grey); }
+        .form-trust-logos span { font-size: 11px; color: var(--text-grey); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+        .mini-logo-text { font-weight: 800; color: var(--dark-navy); font-size: 13px; }
+
+        .thank-you-state { display: none; text-align: center; padding: 20px 0; }
+        .thank-you-state h3 { color: var(--green); font-size: 24px; margin-bottom: 12px; }
+        .btn-whatsapp { background-color: var(--whatsapp); color: var(--white); margin-top: 16px; animation: none; }
+
+        /* HOTEL BRANDS SINGLE LINE MARQUEE */
+        .brand-marquee-section { overflow: hidden; padding-top: 80px; padding-bottom: 80px; }
+        .brand-marquee-section h2 { margin-bottom: 16px; }
+        .brand-subtext { max-width: 620px; margin: 0 auto 48px; color: var(--text-grey); font-size: 16px; line-height: 1.7; }
+        
+        .logo-marquee { position: relative; overflow: hidden; width: 100%; mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); }
+        .marquee-track { display: flex; align-items: center; gap: 70px; width: max-content; animation: brandScrollLeft 40s linear infinite; padding: 20px 0; }
+        .logo-marquee:hover .marquee-track { animation-play-state: paused; }
+        
+        .brand-logo-item { flex: 0 0 auto; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
+        .brand-logo-item img { object-fit: contain; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05)); }
+        .brand-logo-item:hover img { transform: scale(1.15); }
+        
+        @keyframes brandScrollLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        
+        /* ICONS & FEATURES */
+        .icon-wrapper { 
+            width: 64px; height: 64px; border-radius: 16px; background: var(--light-gold); 
+            color: var(--gold); display: flex; align-items: center; justify-content: center; 
+            margin-bottom: 24px; transition: all 0.3s ease;
+        }
+        .icon-wrapper svg { width: 32px; height: 32px; stroke-width: 1.5; }
+        
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 48px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
+        
+        .feature-card { background: var(--white); padding: 40px 32px; border-radius: 16px; box-shadow: var(--shadow-card); border-top: 3px solid var(--gold); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .feature-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
+        .feature-card:hover .icon-wrapper { background: var(--gold); color: var(--white); transform: scale(1.05); }
+        .feature-card h3 { font-size: 20px; margin-bottom: 12px; color: var(--dark-navy); }
+        .feature-card p { font-size: 15px; color: var(--text-grey); line-height: 1.7; }
+
+        /* NEW VISUAL SECTIONS (IMAGE & GLASS CARDS) */
+        .bg-image-section {
+            position: relative;
+            background: linear-gradient(rgba(28, 28, 46, 0.85), rgba(28, 28, 46, 0.92)), 
+                        url('https://res.cloudinary.com/dvmkndb5o/image/upload/v1782892427/fransjhclub_cjyfkv.webp') center/cover fixed;
+            color: var(--white);
+        }
+
+        .bg-image-section h2, 
+        .bg-image-section .sub-heading {
+            color: var(--white);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            padding: 32px 24px; 
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .glass-card .icon-wrapper {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--gold);
+            border: 1px solid rgba(184, 134, 11, 0.3);
+            margin: 0 auto 20px;
+        }
+
+        .glass-card h3 { color: var(--white); font-size: 17px; margin-bottom: 12px; }
+        .glass-card p { color: #E0E0E0; font-size: 14px; }
+
+        /* HOW IT WORKS STEPS */
+        .step-card { text-align: center; padding: 24px; position: relative; }
+        .step-number { width: 56px; height: 56px; background: var(--gold); color: var(--dark-navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 800; margin: 0 auto 24px auto; box-shadow: 0 8px 20px rgba(184,134,11,0.2); }
+        .step-card h3 { font-size: 20px; margin-bottom: 12px; }
+        .step-card p { font-size: 15px; color: var(--text-grey); }
+
+        /* TESTIMONIAL SLIDESHOW */
+        .testimonial-slider-wrapper { position: relative; max-width: 800px; margin: 40px auto 20px; padding: 10px; }
+        .testimonial-slide { 
+            display: none; text-align: center; background: var(--light-grey); border-radius: 16px; 
+            padding: 56px 48px; border: 1px solid var(--border-grey);
+            animation: slideFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .testimonial-slide.active { display: block; }
+        @keyframes slideFadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .testimonial-stars { color: var(--gold); display: flex; justify-content: center; gap: 4px; margin-bottom: 24px; }
+        .testimonial-stars svg { width: 24px; height: 24px; fill: currentColor; }
+        .testimonial-text { font-size: 18px; color: var(--text-dark); line-height: 1.8; margin-bottom: 32px; font-style: italic; font-weight: 400; }
+        
+        .author-info h4 { font-size: 18px; color: var(--dark-navy); margin-bottom: 4px; }
+        .author-info span { font-size: 14px; color: var(--text-grey); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
+        
+        .slider-dots { display: flex; justify-content: center; gap: 12px; margin-top: 32px; }
+        .dot { width: 10px; height: 10px; background: #D1D1D1; border-radius: 50%; cursor: pointer; transition: all 0.3s ease; }
+        .dot:hover { background: #A0A0A0; }
+        .dot.active { background: var(--gold); transform: scale(1.4); }
+
+        /* FAQ ACCORDION */
+        .faq-section { background-color: var(--dark-navy); color: var(--white); }
+        .faq-item { background: var(--white); border-radius: 12px; margin-bottom: 16px; overflow: hidden; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .faq-item:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+        .faq-item.active { border-left: 4px solid var(--gold); box-shadow: 0 8px 24px rgba(184, 134, 11, 0.15); }
+        
+        .faq-question { padding: 24px 32px; width: 100%; text-align: left; background: none; border: none; font-size: 17px; font-weight: 600; color: var(--dark-navy); cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-main); transition: color 0.3s; }
+        .faq-item.active .faq-question { color: var(--gold); }
+        
+        .faq-icon { width: 24px; height: 24px; stroke: var(--dark-navy); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.3s; flex-shrink: 0; margin-left: 16px; }
+        .faq-item.active .faq-icon { transform: rotate(180deg); stroke: var(--gold); }
+        
+        .faq-answer { padding: 0 32px; max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1); background: var(--white); }
+        .faq-answer p { padding-bottom: 24px; color: var(--text-grey); font-size: 15px; line-height: 1.7; }
+
+        /* CTA BANNERS */
+        .cta-banner { background: linear-gradient(135deg, var(--dark-navy) 0%, #2A2A4A 100%); padding: 80px 0; border-top: 4px solid var(--gold); border-bottom: 4px solid var(--gold); }
+        
+        /* LOCATIONS */
+        .location-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 40px; }
+        .loc-tag { background: var(--white); color: var(--dark-navy); padding: 10px 20px; border-radius: 30px; font-size: 15px; font-weight: 500; border: 1px solid var(--border-grey); transition: all 0.3s; }
+        .loc-tag:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .loc-tag.spiritual { background: var(--gold); color: var(--white); font-weight: 700; border-color: var(--gold); box-shadow: 0 4px 15px rgba(184, 134, 11, 0.3); display: flex; align-items: center; gap: 6px; }
+        .loc-tag.spiritual svg { width: 14px; height: 14px; fill: currentColor; }
+
+        /* FOOTER & FLOATING ACTIONS */
+        footer { background-color: var(--dark-navy); color: var(--white); border-top: 1px solid rgba(255,255,255,0.1); padding: 60px 0 40px 0; text-align: center; font-size: 14px; }
+        .footer-logo { width: min(220px, 80vw); margin: 0 auto 24px; filter: drop-shadow(0 0 8px rgba(255,255,255,0.1)); }
+        
+        .fab-whatsapp { position: fixed; bottom: 24px; right: 24px; background: var(--whatsapp); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4); z-index: 999; transition: transform 0.2s; }
+        .fab-whatsapp svg { width: 32px; height: 32px; fill: currentColor; }
+        .fab-whatsapp:hover { transform: scale(1.1); }
+        .mobile-call-bar { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--gold); color: var(--dark-navy); text-align: center; padding: 16px; font-weight: 800; font-size: 16px; z-index: 998; box-shadow: 0 -4px 15px rgba(0,0,0,0.15); letter-spacing: 0.05em; }
+
+        /* SCROLL REVEAL ANIMATIONS */
+        .reveal-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal-up.is-visible { opacity: 1; transform: translateY(0); }
+        .reveal-up.delay-1 { transition-delay: 0.1s; }
+        .reveal-up.delay-2 { transition-delay: 0.2s; }
+        .reveal-up.delay-3 { transition-delay: 0.3s; }
+        .reveal-up.delay-4 { transition-delay: 0.4s; }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+            .grid-4, .grid-3 { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; text-align: center; margin-top: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            header { height: 70px; }
+            .logo-img { height: 45px; }
+            .section-padding { padding: 60px 0; }
+            h2 { font-size: 30px; }
+            .hero { padding: 40px 0 60px 0; }
+            .hero-content h1 { font-size: 36px; }
+            
+            .grid-4, .grid-3, .stats-grid { grid-template-columns: 1fr; gap: 24px; }
+            .feature-card { padding: 32px 24px; }
+            .testimonial-slide { padding: 40px 24px; }
+            
+            .fab-whatsapp { bottom: 80px; }
+            .mobile-call-bar { display: block; }
+            body { padding-bottom: 60px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo-area">
+                <img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1781172811/Untitled_design_1_bieoh3.png" alt="Franchise Club" class="logo-img">
+            </div>
+            <button onclick="document.getElementById('top-form').scrollIntoView({behavior: 'smooth'})" class="btn-gold" style="padding: 12px 24px; font-size: 14px;">Get Free Consultation</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <span class="pain-text">Stop losing revenue to empty rooms</span>
+                <h1>Turn Your Independent Property Into a Premium Branded Hotel</h1>
+                <p>Franchise Club connects 40+ room properties across North & West India with Sterling, Sarovar, Royal Orchid & 20+ premium brands. Secure a Management Contract, Revenue Share, or Guaranteed Lease today.</p>
+                
+                <ul class="trust-list">
+                    <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> 100+ Hotels Converted</li>
+                    <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> 25+ Premium Hotel Brands</li>
+                    <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> 14+ Years of Specialized Experience</li>
+                </ul>
+            </div>
+
+            <div class="form-card" id="top-form">
+                <h3>Get Your Free Revenue Fitment</h3>
+                <p>Discover which premium brand fits your property best.</p>
+                
+                <div class="step-indicator">
+                    <div class="step-dot active" id="dot1">1</div>
+                    <div class="step-dot" id="dot2">2</div>
+                </div>
+
+                <form id="leadForm1" class="lead-form">
+                    <div class="form-step active" id="step1">
+                        <div class="form-group">
+                            <label for="roomCount">Number of Keys / Rooms</label>
+                            <select class="form-control" required id="roomCount" name="roomCount">
+                                <option value="">Select Room Count</option>
+                                <option value="40-60">40–60 Rooms</option>
+                                <option value="60-100">60–100 Rooms</option>
+                                <option value="100-150">100–150 Rooms</option>
+                                <option value="150+">150+ Rooms</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="propCity">Property City / State</label>
+                            <input type="text" class="form-control" placeholder="e.g. Udaipur, Rajasthan" required id="propCity" name="propCity">
+                        </div>
+                        <button type="button" class="btn-gold btn-block" onclick="nextStep()">CONTINUE TO STEP 2 &rarr;</button>
+                    </div>
+
+                    <div class="form-step" id="step2">
+                        <div class="form-group">
+                            <label for="fullName1">Full Name</label>
+                            <input type="text" class="form-control" placeholder="Your full name" required minlength="2" id="fullName1" name="fullName">
+                        </div>
+                        <div class="form-group">
+                            <label for="whatsapp1">WhatsApp Number</label>
+                            <input type="tel" class="form-control" placeholder="For faster updates" required pattern="[0-9]{10}" id="whatsapp1" name="whatsapp">
+                        </div>
+                        <button type="submit" class="btn-gold btn-gold-animated btn-block">GET MY PROJECTION &rarr;</button>
+                        <button type="button" style="background:none; border:none; color:var(--text-grey); font-size:12px; margin-top:16px; width:100%; cursor:pointer; font-weight:600;" onclick="prevStep()">&larr; Back to Property Details</button>
+                    </div>
+
+                    <span class="trust-line">🔒 100% Confidential. No commitment required.</span>
+                    <div class="form-trust-logos">
+                        <span>Evaluated for:</span>
+                        <span class="mini-logo-text">STERLING</span>
+                        <span class="mini-logo-text">SAROVAR</span>
+                        <span class="mini-logo-text">ROYAL ORCHID</span>
+                    </div>
+                </form>
+
+                <div class="thank-you-state thank-you-msg">
+                    <h3>Fitment Request Received! ✓</h3>
+                    <p>Amit Ojha will review your property details and call you within 24 hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding text-center brand-marquee-section">
+        <div class="container">
+            <div class="section-separator"><div class="section-separator-icon"></div></div>
+            <h2>Hotel Brands You Can Partner With</h2>
+            <p class="brand-subtext">Direct, established relationships with 25+ domestic and international hotel brands. We match the right brand to your exact property specs.</p>
+        </div>
+
+        <div class="logo-marquee">
+            <div class="marquee-track" id="marqueeTrack">
+                <div class="brand-logo-item"><img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1782871158/33_ppsu1t.png" alt="Partner hotel brand logo" width="150" height="75" loading="lazy"></div>
+                <div class="brand-logo-item"><img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1782871160/31_c4plfj.png" alt="Partner hotel brand logo" width="150" height="75" loading="lazy"></div>
+                <div class="brand-logo-item"><img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1782871160/35_xwtpai.png" alt="Partner hotel brand logo" width="150" height="75" loading="lazy"></div>
+                <div class="brand-logo-item"><img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1782871157/32_qtcukf.png" alt="Partner hotel brand logo" width="150" height="75" loading="lazy"></div>
+                <div class="brand-logo-item"><img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1782871158/34_zdwgaq.png" alt="Partner hotel brand logo" width="150" height="75" loading="lazy"></div>
+                <div class="brand-logo-item"><img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1782871151/29_yxzswr.png" alt="Partner hotel brand logo" width="150" height="75" loading="lazy"></div>
+                <div class="brand-logo-item"><img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1782871148/27_e7tto7.png" alt="Partner hotel brand logo" width="150" height="75" loading="lazy"></div>
+                <div class="brand-logo-item"><img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1782871154/30_nkw2pg.png" alt="Partner hotel brand logo" width="150" height="75" loading="lazy"></div>
+                <div class="brand-logo-item"><img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1782871149/28_brgk5e.png" alt="Partner hotel brand logo" width="150" height="75" loading="lazy"></div>
+                <div class="brand-logo-item"><img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1782871146/25_vtx10g.png" alt="Partner hotel brand logo" width="150" height="75" loading="lazy"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="grey-bg section-padding">
+        <div class="container">
+            <div class="section-separator"><div class="section-separator-icon"></div></div>
+            <h2 class="text-center">What Property Owners Say About Franchise Club</h2>
+            <p class="sub-heading text-center">Real results from hotel owners who partnered with us for brand conversion.</p>
+            
+            <div class="testimonial-slider-wrapper" id="testimonialSlider">
+                
+                <div class="testimonial-slide active">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"We were running an independent 55-room property in Rishikesh with mediocre occupancy. Franchise Club matched us with Sterling within 3 months, and our RevPAR jumped nearly 40% in the first two quarters after rebranding. Amit's team handled everything — negotiation, staff training, even the renovation checklist."</p>
+                    <div class="author-info">
+                        <h4>Rajeev Sharma</h4><span>Owner, 55-Room Property — Rishikesh</span>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    <p class="testimonial-text">"I was skeptical about franchising since I'd heard horror stories about hidden fees. Franchise Club was completely transparent from the first call. They got us a Guaranteed Lease deal with Sarovar for our Mathura property — fixed monthly income, zero operational headache for me."</p>
+                    <div class="author-info">
+                        <h4>Sunita Kapoor</h4><span>Owner, 48-Room Property — Mathura</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-slide">
+                    <div class="testimonial-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    <p class="testimonial-text">"Our commercial building in Ayodhya was sitting half-used. The Franchise Club team helped us convert it into a Royal Orchid branded hotel — from brand fitment to staff training, the entire process took about 90 days. Couldn't have navigated it alone."</p>
+                    <div class="author-info">
+                        <h4>Vikram Gupta</h4><span>Owner, Commercial Conversion — Ayodhya</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-slide">
+                    <div class="testimonial-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    <p class="testimonial-text">"What impressed me most was how they matched brand fitment to our exact property size and location instead of pushing whatever brand paid them more. We went with an MG Revenue Sharing model with Best Western and now have a guaranteed monthly floor plus upside share."</p>
+                    <div class="author-info">
+                        <h4>Anil Mehta</h4><span>Owner, 72-Room Property — Vrindavan</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="slider-dots" id="sliderDots"></div>
+        </div>
+    </section>
+
+    <section class="navy-bg section-padding">
+        <div class="container">
+            <div class="stats-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center;">
+                <div><div style="font-size: 56px; font-weight: 800; color: var(--gold); line-height: 1;"><span class="stat-num" data-count="100" data-suffix="+">0</span></div><div style="font-size: 15px; margin-top: 8px; color: #E0E0E0; text-transform: uppercase; letter-spacing: 0.05em;">Properties Converted</div></div>
+                <div><div style="font-size: 56px; font-weight: 800; color: var(--gold); line-height: 1;"><span class="stat-num" data-count="25" data-suffix="+">0</span></div><div style="font-size: 15px; margin-top: 8px; color: #E0E0E0; text-transform: uppercase; letter-spacing: 0.05em;">Premium Brands</div></div>
+                <div><div style="font-size: 56px; font-weight: 800; color: var(--gold); line-height: 1;"><span class="stat-num" data-count="4" data-suffix="">0</span></div><div style="font-size: 15px; margin-top: 8px; color: #E0E0E0; text-transform: uppercase; letter-spacing: 0.05em;">Business Models</div></div>
+                <div><div style="font-size: 56px; font-weight: 800; color: var(--gold); line-height: 1;"><span class="stat-num" data-count="14" data-suffix="+">0</span></div><div style="font-size: 15px; margin-top: 8px; color: #E0E0E0; text-transform: uppercase; letter-spacing: 0.05em;">Years Experience</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container text-center">
+            <div class="section-separator"><div class="section-separator-icon"></div></div>
+            <h2>End-to-End Brand Conversion</h2>
+            <p class="sub-heading">We handle the heavy lifting from initial assessment to final launch.</p>
+            
+            <div class="grid-4">
+                <div class="step-card reveal-up">
+                    <div class="step-number">1</div>
+                    <h3>Property Details</h3>
+                    <p>Submit basic property information. No cost, no commitment required.</p>
+                </div>
+                <div class="step-card reveal-up delay-1">
+                    <div class="step-number">2</div>
+                    <h3>Fitment Analysis</h3>
+                    <p>Our consultants evaluate brand fitment based on size, location, and condition.</p>
+                </div>
+                <div class="step-card reveal-up delay-2">
+                    <div class="step-number">3</div>
+                    <h3>Negotiation</h3>
+                    <p>We shortlist brands, present financial models, and negotiate terms.</p>
+                </div>
+                <div class="step-card reveal-up delay-3">
+                    <div class="step-number">4</div>
+                    <h3>Launch</h3>
+                    <p>Your property is rebranded, staff is trained, and operations transform.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-banner text-center">
+        <div class="container">
+            <h2 style="color: var(--white); margin-bottom: 24px;">Maximize Your Property's Valuation Today</h2>
+            <p style="color: #E0E0E0; margin-bottom: 40px; font-size: 18px;">Find out which premium brand is the perfect financial fit for your hotel.</p>
+            <button onclick="document.getElementById('top-form').scrollIntoView({behavior: 'smooth'})" class="btn-gold btn-gold-animated">CHECK MY PROPERTY FITMENT &rarr;</button>
+        </div>
+    </section>
+
+    <!-- 1. STRATEGIC BUSINESS MODELS SECTION -->
+    <section class="grey-bg section-padding">
+        <div class="container">
+            <div class="section-separator"><div class="section-separator-icon"></div></div>
+            <h2 class="text-center">Strategic Business Models</h2>
+            <p class="text-center sub-heading">Franchise Club aligns the brand contract with your exact financial goals.</p>
+            
+            <div class="grid-4">
+                <div class="feature-card reveal-up">
+                    <div class="icon-wrapper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
+                    <h3>Management Contract</h3>
+                    <p>The brand takes over full operations. Retain ownership and earn revenue share with zero operational involvement.</p>
+                </div>
+                <div class="feature-card reveal-up delay-1">
+                    <div class="icon-wrapper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 20V10M12 20V4M6 20v-6"></path></svg></div>
+                    <h3>Revenue Sharing</h3>
+                    <p>Split revenues based on agreed percentages. Both parties share the risk and the upside equally.</p>
+                </div>
+                <div class="feature-card reveal-up delay-2">
+                    <div class="icon-wrapper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+                    <h3>MG Revenue Sharing</h3>
+                    <p>Receive a guaranteed minimum monthly income regardless of performance, plus an upside share.</p>
+                </div>
+                <div class="feature-card reveal-up delay-3">
+                    <div class="icon-wrapper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg></div>
+                    <h3>Lease</h3>
+                    <p>The hotel brand leases your property for a fixed amount. Earn fixed rental income with zero involvement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. IMAGE BACKGROUND SECTION -->
+    <section class="bg-image-section section-padding">
+        <div class="container">
+            <h2 class="text-center" style="color: white;">Property Types We Serve</h2>
+            <div class="grid-4" style="margin-bottom: 20px;">
+                <div class="glass-card text-center reveal-up">
+                    <div class="icon-wrapper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path></svg></div>
+                    <h3>Operational Hotel</h3>
+                    <p>Boost RevPAR and occupancy for your independent hotel.</p>
+                </div>
+                <div class="glass-card text-center reveal-up delay-1">
+                    <div class="icon-wrapper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21h18M5 21V7l8-4 8 4v14M9 21v-4h6v4"></path></svg></div>
+                    <h3>Under Construction</h3>
+                    <p>Secure a brand before opening for instant market recognition.</p>
+                </div>
+                <div class="glass-card text-center reveal-up delay-2">
+                    <div class="icon-wrapper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
+                    <h3>Built to Suit (BTS)</h3>
+                    <p>Coordinate brand specs perfectly during your design phase.</p>
+                </div>
+                <div class="glass-card text-center reveal-up delay-3">
+                    <div class="icon-wrapper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg></div>
+                    <h3>Commercial Conversion</h3>
+                    <p>Turn your office building or complex into a branded hotel.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. NAVY COLOR BLOCK SECTION -->
+    <section class="navy-bg section-padding">
+        <div class="container">
+            <div class="section-separator"><div class="section-separator-icon"></div></div>
+            <h2 class="text-center" style="color: white;">The Franchise Club Advantage</h2>
+            <div class="grid-3">
+                <div class="feature-card reveal-up">
+                    <div class="icon-wrapper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg></div>
+                    <h3>25+ Hotel Brands</h3>
+                    <p>Access to domestic and international brands across all categories — from mid-scale to ultra-luxury.</p>
+                </div>
+                <div class="feature-card reveal-up delay-1">
+                    <div class="icon-wrapper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></div>
+                    <h3>End-to-End Service</h3>
+                    <p>We handle shortlisting, negotiation, renovation guidelines, staff training, and official launch.</p>
+                </div>
+                <div class="feature-card reveal-up delay-2">
+                    <div class="icon-wrapper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+                    <h3>Verified Relationships</h3>
+                    <p>Direct, established connections with leadership at Sterling, Sarovar, Royal Orchid, Brij Hotels, and more.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. CLEAN WHITE SECTION -->
+    <section class="section-padding" style="background-color: var(--white);">
+        <div class="container text-center">
+            <h2>Currently Serving North & West India</h2>
+            <div class="location-tags">
+                <span class="loc-tag">Delhi NCR</span>
+                <span class="loc-tag">Jaipur</span>
+                <span class="loc-tag">Udaipur</span>
+                <span class="loc-tag">Jodhpur</span>
+                <span class="loc-tag spiritual"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Ayodhya</span>
+                <span class="loc-tag spiritual"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Varanasi</span>
+                <span class="loc-tag spiritual"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Mathura</span>
+                <span class="loc-tag spiritual"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Vrindavan</span>
+                <span class="loc-tag">Rishikesh</span>
+                <span class="loc-tag">Haridwar</span>
+                <span class="loc-tag">Mumbai</span>
+                <span class="loc-tag">Pune</span>
+            </div>
+            <p class="gold-text" style="margin-top: 32px; font-weight: 500;">Spiritual destinations (Ayodhya, Mathura, Varanasi, Vrindavan) are currently our fastest-growing market for brand conversions.</p>
+        </div>
+    </section>
+
+    <section class="faq-section section-padding">
+        <div class="container">
+            <div class="section-separator"><div class="section-separator-icon"></div></div>
+            <h2 class="text-center" style="margin-bottom: 48px; color: white;">Frequently Asked Questions</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                
+                <div class="faq-item">
+                    <button class="faq-question">What is the minimum property size to qualify?
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="faq-answer"><p>Your property must have a minimum of 40 keys (rooms). Properties with 40 to 150+ rooms are welcome. Both operational and under-construction hotels qualify.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Which hotel brands can I access through Franchise Club?
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="faq-answer"><p>We work with 25+ brands including Sterling, Sarovar Hotels, Royal Orchid, Brij Hotels, Clarks, Tivoli Resorts, Best Western, Spree, Sayyaji, Prism by OYO, Soaltee (International), Atmosphere Living (International) and more.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">What business model is best for me?
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="faq-answer"><p>It depends on your goals. If you want hands-off income — Management Contract. If you want guaranteed monthly income — MG Revenue Sharing. If you want to exit operations completely — Lease. Our consultant will advise you during the assessment.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">How long does the entire process take?
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="faq-answer"><p>From initial assessment to brand agreement signing typically takes 60–120 days depending on the brand and property. Franchise Club manages the entire timeline to expedite the launch.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">What does it cost to work with Franchise Club?
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="faq-answer"><p>Our fee structure is transparently discussed in the first consultation call. There are no hidden charges, and the initial property assessment is completely free.</p></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="bottom-form-section" class="navy-bg section-padding">
+        <div class="container bottom-form-container">
+            <h2 class="gold-text text-center">Ready to Elevate Your Property?</h2>
+            <p class="text-center" style="margin-bottom: 40px; color: #E0E0E0;">Submit your details below. Our senior consultant Amit Ojha will personally contact you within 24 hours.</p>
+            
+            <div class="form-card" style="max-width: 600px; margin: 0 auto;">
+                <form id="leadForm2" class="lead-form">
+                    <div class="form-group">
+                        <label for="fullName2">Full Name</label>
+                        <input type="text" class="form-control" placeholder="Your full name" required minlength="2" id="fullName2" name="fullName2">
+                    </div>
+                    <div class="form-group">
+                        <label for="whatsapp2">Mobile Number</label>
+                        <input type="tel" class="form-control" placeholder="WhatsApp number preferred" required pattern="[0-9]{10}" id="whatsapp2" name="whatsapp2">
+                    </div>
+                    <div class="form-group">
+                        <label for="propCity2">Property City / State</label>
+                        <input type="text" class="form-control" placeholder="e.g. Udaipur, Rajasthan" required id="propCity2" name="propCity2">
+                    </div>
+                    <div class="form-group">
+                        <label for="roomCount2">Number of Keys / Rooms</label>
+                        <select class="form-control" required id="roomCount2" name="roomCount2">
+                            <option value="">Select Room Count</option>
+                            <option value="40-60">40–60 Rooms</option>
+                            <option value="60-100">60–100 Rooms</option>
+                            <option value="100-150">100–150 Rooms</option>
+                            <option value="150+">150+ Rooms</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn-gold btn-gold-animated btn-block" style="margin-top: 24px;">REQUEST CONSULTATION &rarr;</button>
+                    <span class="trust-line">🔒 Your details are 100% confidential.</span>
+                </form>
+
+                <div class="thank-you-state thank-you-msg">
+                    <h3>Thank You! ✓</h3>
+                    <p>Your property details have been received. We will call you shortly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <img src="https://res.cloudinary.com/dvmkndb5o/image/upload/v1781172811/Untitled_design_1_bieoh3.png" alt="Franchise Club" class="footer-logo">
+            <p class="footer-disclaimer">Minimum property requirement: 40 keys (rooms). Currently serving North & West India.</p>
+            <p style="margin-top: 16px; color: #777;">&copy; 2026 Franchise Club. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/919582252656" class="fab-whatsapp" target="_blank" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.83 14.13c-.25.7-1.44 1.34-1.98 1.42-.5.08-1.14.11-1.85-.12-.42-.13-.97-.32-1.66-.62-2.93-1.27-4.84-4.24-4.98-4.44-.14-.2-1.19-1.58-1.19-3.01 0-1.43.75-2.13 1.02-2.42.27-.29.58-.36.78-.36.2 0 .39.002.56.01.18.008.42-.07.66.5.25.6.83 2.07.9 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.18-.31.4-.44.53-.15.15-.3.31-.13.61.17.3.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.47.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.66-.15.27.1 1.71.81 2 .96.29.15.48.22.55.34.07.13.07.73-.18 1.43z"/></svg>
+    </a>
+    <a href="tel:+919582252656" class="mobile-call-bar">
+        CALL AMIT OJHA
+    </a>
+
+    <script>
+        // Progressive Disclosure Form Logic
+        function nextStep() {
+            const roomCount = document.getElementById('roomCount').value;
+            const propCity = document.getElementById('propCity').value;
+            if(!roomCount || !propCity) return alert("Please fill in property details.");
+            
+            document.getElementById('step1').classList.remove('active');
+            document.getElementById('step2').classList.add('active');
+            document.getElementById('dot1').classList.replace('active', 'completed');
+            document.getElementById('dot1').innerHTML = '✓';
+            document.getElementById('dot2').classList.add('active');
+        }
+
+        function prevStep() {
+            document.getElementById('step2').classList.remove('active');
+            document.getElementById('step1').classList.add('active');
+            document.getElementById('dot2').classList.remove('active');
+            document.getElementById('dot1').classList.replace('completed', 'active');
+            document.getElementById('dot1').innerHTML = '1';
+        }
+
+        // Form Submit
+        document.querySelectorAll('.lead-form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                this.style.display = 'none';
+                if(this.nextElementSibling) this.nextElementSibling.style.display = 'block';
+            });
+        });
+
+        // Premium FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const answer = question.nextElementSibling;
+                const isActive = item.classList.contains('active');
+                
+                document.querySelectorAll('.faq-item').forEach(i => {
+                    i.classList.remove('active');
+                    i.querySelector('.faq-answer').style.maxHeight = null;
+                });
+
+                if (!isActive) {
+                    item.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                }
+            });
+        });
+
+        // Testimonial Slider
+        (function() {
+            const slides = document.querySelectorAll('.testimonial-slide');
+            if (slides.length === 0) return;
+            const dotContainer = document.getElementById('sliderDots');
+            let currentSlide = 0, slideInterval;
+
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.className = `dot ${i === 0 ? 'active' : ''}`;
+                dot.setAttribute('aria-label', `Go to testimonial slide ${i + 1}`);
+                dot.style.border = 'none';
+                dot.onclick = () => goToSlide(i);
+                dotContainer.appendChild(dot);
+            });
+            const dots = document.querySelectorAll('.dot');
+
+            function goToSlide(n) {
+                slides[currentSlide].classList.remove('active');
+                dots[currentSlide].classList.remove('active');
+                currentSlide = (n + slides.length) % slides.length;
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+                resetInterval();
+            }
+
+            const startInterval = () => slideInterval = setInterval(() => goToSlide(currentSlide + 1), 6000);
+            const stopInterval = () => clearInterval(slideInterval);
+            const resetInterval = () => { stopInterval(); startInterval(); };
+
+            const wrapper = document.getElementById('testimonialSlider');
+            let startX = 0;
+            wrapper.addEventListener('touchstart', e => { startX = e.changedTouches[0].screenX; stopInterval(); }, {passive:true});
+            wrapper.addEventListener('touchend', e => {
+                let diff = startX - e.changedTouches[0].screenX;
+                if(Math.abs(diff) > 50) goToSlide(currentSlide + (diff > 0 ? 1 : -1));
+                startInterval();
+            }, {passive:true});
+            
+            wrapper.addEventListener('mouseenter', stopInterval);
+            wrapper.addEventListener('mouseleave', startInterval);
+            startInterval();
+        })();
+
+        // Scroll Animations & Counters
+        (function() {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelectorAll('.reveal-up').forEach(el => el.classList.add('is-visible'));
+                document.querySelectorAll('.stat-num').forEach(el => el.textContent = el.dataset.count + (el.dataset.suffix || ''));
+                return;
+            }
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+
+            const counterObs = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.querySelectorAll('.stat-num').forEach(el => {
+                            let target = +el.dataset.count, suffix = el.dataset.suffix || '', start = performance.now();
+                            const tick = now => {
+                                let p = Math.min((now - start) / 2000, 1);
+                                el.textContent = Math.round((1 - Math.pow(1 - p, 3)) * target) + suffix;
+                                if (p < 1) requestAnimationFrame(tick);
+                            };
+                            requestAnimationFrame(tick);
+                        });
+                        counterObs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.4 });
+            
+            const stats = document.querySelector('.stats-grid');
+            if (stats) counterObs.observe(stats);
+        })();
+
+        // Marquee Infinite Cloning Script
+        (function setupMarquee() {
+            const track = document.querySelector('.marquee-track');
+            if (!track) return;
+            
+            const items = Array.from(track.children);
+            
+            items.forEach(item => {
+                const clone = item.cloneNode(true);
+                clone.setAttribute('aria-hidden', 'true'); 
+                track.appendChild(clone);
+            });
+        })();
+    </script>
+</body>
+</html>
